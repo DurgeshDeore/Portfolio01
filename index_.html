@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="default">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Durgesh Deore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --bg:#f9f8f6;--fg:#1a1a18;--muted:#888;--border:#e2e0dc;--red:#c0392b;
+}
+[data-theme="night"]{--bg:#111110;--fg:#e8e6e1;--muted:#555;--border:#222;}
+[data-theme="rain"]{--bg:#0f1117;--fg:#cdd3db;--muted:#4a5568;--border:#1e2530;}
+
+html{font-size:15px;scroll-behavior:smooth;}
+
+body{
+  background:var(--bg);color:var(--fg);
+  font-family:'EB Garamond',serif;line-height:1.65;
+  max-width:650px;margin:auto;padding:0 28px;
+  transition:background .4s,color .4s;
+}
+
+/* ── LOADER ─── */
+#loader{
+  position:fixed;inset:0;z-index:999;
+  background:var(--fg);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .6s ease;
+}
+#loader.out{opacity:0;pointer-events:none;}
+#loading-text{
+  font-family:'EB Garamond',serif;font-style:italic;
+  font-size:clamp(2rem,8vw,3.8rem);
+  color:var(--bg);letter-spacing:-.01em;
+  transition:opacity .12s;
+}
+
+/* ── GREETING BAR ─── */
+#greeting-bar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:9px 28px;
+  background:var(--bg);border-bottom:1px solid var(--border);
+  font-family:'DM Mono',monospace;font-size:.62rem;
+  color:var(--muted);letter-spacing:.04em;
+  transition:background .4s,border-color .4s;
+}
+#ticker{transition:opacity .25s;}
+#bar-right{display:flex;gap:18px;align-items:center;}
+#live-dot{width:5px;height:5px;border-radius:50%;background:var(--red);
+  display:inline-block;animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
+
+main{padding-top:92px;padding-bottom:80px;}
+section{margin-bottom:68px;}
+
+.section-label{
+  font-family:'DM Mono',monospace;font-size:.6rem;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:20px;
+}
+
+/* ── HERO ─── */
+.hero{display:flex;align-items:center;gap:18px;margin-bottom:60px;}
+
+/* Inline SVG avatar */
+.profile-wrap{
+  width:70px;height:70px;border-radius:50%;
+  border:1.5px solid var(--border);overflow:hidden;flex-shrink:0;
+}
+.profile-wrap svg{width:100%;height:100%;}
+.profile-wrap img{width:100%;height:100%;}
+
+
+.site-name{font-size:2.3rem;font-weight:500;letter-spacing:-.02em;line-height:1.1;}
+.site-sub{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--muted);margin-top:3px;}
+
+/* ── INTRO ─── */
+#intro p{font-size:1.05rem;line-height:1.75;margin-bottom:14px;}
+#intro em{font-style:italic;}
+#intro strong{font-weight:500;}
+a.il{color:var(--fg);text-decoration:underline;text-decoration-color:var(--border);
+  text-underline-offset:3px;transition:color .2s,text-decoration-color .2s;}
+a.il:hover{color:var(--red);text-decoration-color:var(--red);}
+
+/* ── LINK LIST ─── */
+.link-list{display:flex;flex-direction:column;}
+.link-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:11px 0;border-bottom:1px solid var(--border);
+  text-decoration:none;color:var(--fg);font-size:.95rem;transition:color .2s;
+}
+.link-row:first-child{border-top:1px solid var(--border);}
+.link-row:hover{color:var(--red);}
+.link-row:hover .arr{transform:translate(3px,-3px);}
+.link-left{display:flex;gap:16px;}
+.link-num{font-family:'DM Mono',monospace;font-size:.58rem;color:var(--muted);width:16px;}
+.arr{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--muted);
+  display:inline-block;transition:transform .2s;}
+
+/* ── ROWS (projects / experience / edu) ─── */
+.row{
+  padding:13px 0;border-bottom:1px solid var(--border);
+  display:grid;grid-template-columns:38px 1fr auto;
+  gap:14px;align-items:center;
+  text-decoration:none;color:var(--fg);transition:color .2s;
+}
+.row:first-of-type{border-top:1px solid var(--border);}
+.row:hover{color:var(--red);}
+.row:hover .arr{transform:translate(3px,-3px);}
+.row:hover .logo-wrap svg rect, .row:hover .logo-wrap svg circle{stroke:var(--red);}
+
+/* logo placeholder */
+.logo-wrap{
+  width:34px;height:34px;border-radius:7px;
+  border:1px solid var(--border);overflow:hidden;flex-shrink:0;
+  transition:border-color .2s;
+}
+.row:hover .logo-wrap{border-color:var(--red);}
+.logo-wrap svg{width:100%;height:100%;}
+.logo-wrap img{width:100%;height:100%;}
+
+/* plain icon rows (no logo) */
+.row.no-logo{grid-template-columns:1fr auto;}
+.row-icon{font-size:.85rem;line-height:1;}
+
+.row-title{font-size:.95rem;margin-bottom:2px;}
+.row-sub{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--muted);line-height:1.6;}
+.row-right{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--muted);
+  white-space:nowrap;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
+.row-right.accent{color:var(--red);}
+
+/* ── MY WORK (GitHub repo card) ─── */
+.work-card{
+  border:1px solid var(--border);padding:18px 20px;
+  transition:border-color .2s;text-decoration:none;color:var(--fg);
+  display:block;margin-bottom:2px;
+}
+.work-card:first-of-type{border-top:1px solid var(--border);}
+.work-card:hover{border-color:var(--red);}
+.work-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px;}
+.work-card-name{font-size:.95rem;font-weight:500;display:flex;align-items:center;gap:8px;}
+.work-card-name .gh-icon{opacity:.45;flex-shrink:0;}
+.work-card-desc{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--muted);line-height:1.7;margin-bottom:12px;}
+.work-card-meta{display:flex;gap:16px;flex-wrap:wrap;}
+.work-meta-item{font-family:'DM Mono',monospace;font-size:.58rem;color:var(--muted);
+  display:flex;align-items:center;gap:5px;}
+.lang-dot{width:8px;height:8px;border-radius:50%;display:inline-block;}
+.work-card-files{margin-top:12px;padding-top:12px;border-top:1px solid var(--border);}
+.work-card-files-label{font-family:'DM Mono',monospace;font-size:.56rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.file-list{display:flex;flex-wrap:wrap;gap:6px;}
+.file-chip{
+  font-family:'DM Mono',monospace;font-size:.58rem;
+  padding:3px 9px;border:1px solid var(--border);color:var(--muted);
+  transition:border-color .2s,color .2s;
+}
+.work-card:hover .file-chip{border-color:rgba(192,57,43,.3);}
+#xpi-loading,#xpi-error{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);padding:16px 0;}
+
+/* ── SKILLS ─── */
+.skill-row{
+  display:grid;grid-template-columns:110px 1fr;
+  gap:20px;padding:10px 0;border-bottom:1px solid var(--border);
+}
+.skill-row:first-of-type{border-top:1px solid var(--border);}
+.skill-cat{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--muted);text-transform:uppercase;}
+.skill-items{font-size:.9rem;}
+
+/* ── FOOTER ─── */
+footer{
+  padding:28px 0 48px;border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  font-family:'DM Mono',monospace;font-size:.58rem;color:var(--muted);
+}
+
+/* ── REVEAL ─── */
+.reveal{opacity:0;transform:translateY(10px);transition:.5s;}
+.reveal.in{opacity:1;transform:none;}
+
+@media(max-width:480px){
+  body{padding:0 18px;}
+  #greeting-bar{padding:9px 18px;}
+  .skill-row{grid-template-columns:80px 1fr;}
+  .row{grid-template-columns:30px 1fr auto;}
+  .logo-wrap{width:30px;height:30px;}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader"><span id="loading-text">Hello</span></div>
+
+<!-- GREETING BAR -->
+<div id="greeting-bar">
+  <span id="ticker">Good morning</span>
+  <div id="bar-right">
+    <span id="live-dot"></span>
+    <span id="theme-info">Pune, MH</span>
+    <span id="bar-time">00:00</span>
+  </div>
+</div>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <!-- Inline SVG profile avatar — initials "DD" -->
+    <div class="profile-wrap">
+      <!-- <svg viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="70" height="70" fill="#1a1a18"/>
+        
+        <line x1="0" y1="35" x2="70" y2="35" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+        <line x1="35" y1="0" x2="35" y2="70" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+
+        <text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle"
+          font-family="EB Garamond, serif" font-size="22" fill="#f9f8f6" font-style="italic">DD</text>
+
+          <rect x="0" y="63" width="70" height="7" fill="#c0392b"/>
+      </svg> -->
+      <img src="src/img/profile.jpg" alt="Durgesh Deore">
+    </div>
+    <div>
+      <h1 class="site-name">Durgesh Deore</h1>
+      <p class="site-sub">Software Developer · Pune, Maharashtra</p>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section id="intro" class="reveal">
+    <!-- <p>I'm a <em>Master of Computer Applications</em> student focused on
+    <strong>Data Structures &amp; Algorithms</strong>, backend systems and Android development.</p>
+    <p>Previously a <strong>Software Development Engineer Intern</strong> at
+    <a href="#experience" class="il">Magic Software Enterprises</a>,
+    building scalable APIs and enterprise integrations with Magic XPI.</p>
+    <p>Ranked <a href="#recognition" class="il">48th out of 11,200+</a> SPPU students on GeeksForGeeks — top&nbsp;0.4%.</p> -->
+    <p>“The person who works with their hands is a laborer.
+The person who works with their hands and mind is a craftsman.
+The person who works with their hands, mind, and heart is an <b>ARTIST</b>.”
+</p>
+<p><i>— Francis of Assisi</i></p>
+  </section>
+
+  
+  <!-- EXPERIENCE -->
+  <section id="experience" class="reveal">
+    <p class="section-label">Experience</p>
+
+    <!-- SDE Intern row — no image logo, icon instead -->
+    <div class="row no-logo" style="grid-template-columns:1fr auto;">
+      <div>
+        <p class="row-title">SDE Intern — Magic Software Enterprises</p>
+        <p class="row-sub">Production Support · Magic XPI · MS SQL Server · JMeter<br>
+        Built scalable APIs, data confidentiality measures, production debugging.</p>
+      </div>
+      <span class="row-right">2025–26</span>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="reveal">
+    <p class="section-label">Projects</p>
+
+    <!-- TestSphere -->
+    <a href="https://github.com/DurgeshDeore" target="_blank" class="row">
+      <div class="logo-wrap">
+        <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="34" height="34" fill="#0a0a0a"/>
+          <circle cx="17" cy="17" r="9" stroke="#c0392b" stroke-width="1.5"/>
+          <circle cx="17" cy="17" r="4" fill="#c0392b"/>
+          <line x1="17" y1="4" x2="17" y2="8" stroke="#c0392b" stroke-width="1.2"/>
+          <line x1="17" y1="26" x2="17" y2="30" stroke="#c0392b" stroke-width="1.2"/>
+          <line x1="4" y1="17" x2="8" y2="17" stroke="#c0392b" stroke-width="1.2"/>
+          <line x1="26" y1="17" x2="30" y2="17" stroke="#c0392b" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <div>
+        <p class="row-title">TestSphere</p>
+        <p class="row-sub">Online judge · real-time code execution · OTP auth<br>React · Node.js · MongoDB · Judge0</p>
+      </div>
+      <div class="row-right"><span>Present</span><span class="arr">↗</span></div>
+    </a>
+
+    <!-- SolveDoku -->
+    <a href="https://github.com/DurgeshDeore" target="_blank" class="row">
+      <div class="logo-wrap">
+        <!-- <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="34" height="34" fill="#0a0a0a"/>
+          <rect x="6" y="6" width="7" height="7" rx="1" fill="rgba(192,57,43,.15)" stroke="#c0392b" stroke-width="1"/>
+          <rect x="14" y="6" width="7" height="7" rx="1" fill="rgba(192,57,43,.06)" stroke="rgba(192,57,43,.35)" stroke-width=".8"/>
+          <rect x="21" y="6" width="7" height="7" rx="1" fill="rgba(192,57,43,.06)" stroke="rgba(192,57,43,.35)" stroke-width=".8"/>
+          <rect x="6" y="14" width="7" height="7" rx="1" fill="rgba(192,57,43,.06)" stroke="rgba(192,57,43,.35)" stroke-width=".8"/>
+          <rect x="14" y="14" width="7" height="7" rx="1" fill="rgba(192,57,43,.15)" stroke="#c0392b" stroke-width="1"/>
+          <rect x="21" y="14" width="7" height="7" rx="1" fill="rgba(192,57,43,.06)" stroke="rgba(192,57,43,.35)" stroke-width=".8"/>
+          <rect x="6" y="21" width="7" height="7" rx="1" fill="rgba(192,57,43,.06)" stroke="rgba(192,57,43,.35)" stroke-width=".8"/>
+          <rect x="14" y="21" width="7" height="7" rx="1" fill="rgba(192,57,43,.06)" stroke="rgba(192,57,43,.35)" stroke-width=".8"/>
+          <rect x="21" y="21" width="7" height="7" rx="1" fill="rgba(192,57,43,.15)" stroke="#c0392b" stroke-width="1"/>
+        </svg> -->
+        <img src="src/icon/ic_solvedoku_logo.png" alt="SolveDoku logo">
+      </div>
+      <div>
+        <p class="row-title">SolveDoku</p>
+        <p class="row-sub">Android Sudoku solver · backtracking · O(1) space<br>Java · XML · Android Studio</p>
+      </div>
+      <div class="row-right"><span>2025</span><span class="arr">↗</span></div>
+    </a>
+
+    <!-- FarmEasy -->
+    <a href="https://github.com/DurgeshDeore" target="_blank" class="row">
+      <div class="logo-wrap">
+        <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="34" height="34" fill="#0a0a0a"/>
+          <!-- leaf shape -->
+          <path d="M17 28 C17 28 7 22 7 13 C7 8 12 6 17 10 C22 6 27 8 27 13 C27 22 17 28 17 28Z"
+            fill="rgba(192,57,43,.12)" stroke="#c0392b" stroke-width="1.2"/>
+          <line x1="17" y1="28" x2="17" y2="14" stroke="#c0392b" stroke-width="1"/>
+        </svg>
+      </div>
+      <div>
+        <p class="row-title">FarmEasy</p>
+        <p class="row-sub">Full-stack e-commerce for farmers · weather API<br>Java · JSP · HTML/CSS · MySQL</p>
+      </div>
+      <div class="row-right"><span>2024</span><span class="arr">↗</span></div>
+    </a>
+  </section>
+
+  <!-- MY WORK — XPI GitHub Integration -->
+  <section id="my-work" class="reveal">
+    <p class="section-label">Work</p>
+    <div id="xpi-loading">Fetching repository…</div>
+    <div id="xpi-error" style="display:none;">Could not load repository.</div>
+    <!-- card injected by JS -->
+  </section>
+
+  <!-- SKILLS -->
+  <section class="reveal">
+    <p class="section-label">Skills</p>
+    <div class="skill-row"><span class="skill-cat">Languages</span><span class="skill-items">Java, JavaScript (ES6+), C, SQL</span></div>
+    <div class="skill-row"><span class="skill-cat">Frontend</span><span class="skill-items">React.js, HTML5/CSS3, Bootstrap 5, XML</span></div>
+    <div class="skill-row"><span class="skill-cat">Backend</span><span class="skill-items">Node.js, Express.js, RESTful APIs, JSP, Magic XPI</span></div>
+    <div class="skill-row"><span class="skill-cat">Database</span><span class="skill-items">MongoDB, MySQL, PostgreSQL, MS SQL Server</span></div>
+    <div class="skill-row"><span class="skill-cat">Tools</span><span class="skill-items">Git, Android Studio, Postman, JMeter, VS Code</span></div>
+    <!-- <div class="skill-row"><span class="skill-cat">Concepts</span><span class="skill-items">DSA, OOP, DBMS, OS, Computer Networks, MVC, SDLC</span></div> -->
+  </section>
+
+  <!-- RECOGNITION -->
+  <section id="recognition" class="reveal">
+    <p class="section-label">Recognition</p>
+    <div class="row no-logo" style="grid-template-columns:1fr auto;">
+      <div>
+        <p class="row-title">GeeksForGeeks — SPPU Rankings</p>
+        <p class="row-sub">48th out of 11,200+ students across Savitribai Phule Pune University</p>
+      </div>
+      <span class="row-right accent">Top&nbsp;0.4%</span>
+    </div>
+    <!-- <div class="row no-logo" style="grid-template-columns:1fr auto;">
+      <div>
+        <p class="row-title">BCA — KTHM College, Nashik</p>
+        <p class="row-sub">Consistent academic performance across all semesters</p>
+      </div>
+      <span class="row-right accent">8.25 SGPA</span>
+    </div> -->
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="reveal">
+    <p class="section-label">Education</p>
+    <div class="row no-logo" style="grid-template-columns:1fr auto;">
+      <div>
+        <p class="row-title">Master of Computer Applications</p>
+        <p class="row-sub">Dr. D Y Patil Institute of Management &amp; Entrepreneurship, Pune</p>
+      </div>
+      <span class="row-right">2024–26</span>
+    </div>
+    <div class="row no-logo" style="grid-template-columns:1fr auto;">
+      <div>
+        <p class="row-title">Bachelor of Computer Applications</p>
+        <p class="row-sub">KTHM College, Nashik · SGPA 8.25</p>
+      </div>
+      <span class="row-right">2021–24</span>
+    </div>
+  </section>
+
+</main>
+
+<!-- CONTACT -->
+  <section class="reveal">
+    <p class="section-label">Contact</p>
+    <div class="link-list">
+      <a href="mailto:durgeshdeore214@gmail.com" class="link-row">
+        <span class="link-left"><span class="link-num">1</span>Email</span>
+        <span class="arr">↗</span>
+      </a>
+      <a href="https://www.linkedin.com/in/durgeshdeore" target="_blank" class="link-row">
+        <span class="link-left"><span class="link-num">2</span>LinkedIn</span>
+        <span class="arr">↗</span>
+      </a>
+      <a href="https://github.com/DurgeshDeore" target="_blank" class="link-row">
+        <span class="link-left"><span class="link-num">3</span>GitHub</span>
+        <span class="arr">↗</span>
+      </a>
+      <a href="/src/doc/resume.pdf" target="_blank" class="link-row">
+        <span class="link-left"><span class="link-num">3</span>Resume</span>
+        <span class="arr">↗</span>
+      <a href="tel:+917666946207" class="link-row">
+        <span class="link-left"><span class="link-num">4</span>+91 7666 946207</span>
+        <span class="arr">↗</span>
+      </a>
+    </div>
+  </section>
+
+<footer>
+  <span>Durgesh Deore · 2025</span>
+  <!-- <span id="footer-theme">Theme: day</span> -->
+  <span>Pune 🇮🇳</span>
+</footer>
+
+<script>
+/* ── LOADER ─── */
+const greetings = [
+"Hello",
+"नमस्ते",
+"नमस्कार",
+"Hola",
+"Buenos días",
+"Bonjour",
+"Hallo",
+"Guten Tag",
+"Ciao",
+"Buongiorno",
+"Olá",
+"Oi",
+"你好",
+"こんばんは",
+"안녕하세요",
+"Привет",
+"Здравствуйте",
+"Shalom",
+"Habari",
+"Merhaba",
+"Szia",
+"Xin chào",
+"สวัสดี",
+"God dag",
+"Hej",
+"Ahoj",
+"Bună",
+"Yassou",
+"ਸਤ ਸ੍ਰੀ ਅਕਾਲ"
+];
+const loadEl=document.getElementById('loading-text');
+let li=0;
+const INTV=90;
+const loopI=setInterval(()=>{
+  loadEl.style.opacity='0';
+  setTimeout(()=>{loadEl.textContent=greetings[li];loadEl.style.opacity='1';li=(li+1)%greetings.length;},20);
+},INTV);
+setTimeout(()=>{
+  clearInterval(loopI);
+  document.getElementById('loader').classList.add('out');
+  setTimeout(()=>document.getElementById('loader').style.display='none',700);
+},greetings.length*INTV+300);
+
+/* ── TICKER ─── */
+const msgs=["नमस्ते — Welcome","Hello from Pune","Hola! Bienvenido","Bonjour!","こんにちは","안녕하세요","你好","Ciao!","Привет!","Hallo!"];
+let ti=0;
+const tickEl=document.getElementById('ticker');
+function nextTick(){
+  tickEl.style.opacity='0';
+  setTimeout(()=>{tickEl.textContent=msgs[ti];tickEl.style.opacity='1';ti=(ti+1)%msgs.length;},250);
+}
+nextTick();setInterval(nextTick,3000);
+
+/* ── CLOCK ─── */
+function tick(){
+  const n=new Date();
+  document.getElementById('bar-time').textContent=
+    String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');
+}
+tick();setInterval(tick,30000);
+
+/* ── THEME (time + weather) ─── */
+async function setTheme(){
+  const h=new Date().getHours();
+  let theme='default',label='day';
+  if(h>=20||h<6){theme='night';label='night';}
+  try{
+    const r=await fetch('https://wttr.in/Pune?format=j1');
+    const d=await r.json();
+    const wc=parseInt(d.current_condition[0].weatherCode);
+    if(wc>=176&&wc<=395){theme='rain';label='rain';}
+  }catch(e){}
+  document.documentElement.setAttribute('data-theme',theme);
+  document.getElementById('footer-theme').textContent='Theme: '+label;
+  document.getElementById('theme-info').textContent='Pune · '+label;
+}
+setTheme();
+
+/* ── GITHUB XPI INTEGRATION ─── */
+const REPO='DurgeshDeore/XPI_DUMP';
+const REPO_URL='https://github.com/'+REPO;
+
+function langColor(lang){
+  const map={JavaScript:'#f1e05a',Java:'#b07219',Python:'#3572A5',XML:'#0060ac',
+    HTML:'#e34c26',CSS:'#563d7c',TypeScript:'#2b7489',Shell:'#89e051'};
+  return map[lang]||'#8a8a8a';
+}
+
+async function loadXPI(){
+  const loadingEl=document.getElementById('xpi-loading');
+  const errorEl=document.getElementById('xpi-error');
+  const section=document.getElementById('my-work');
+
+  try{
+    // Fetch repo info + contents in parallel
+    const [repoRes,contentsRes]=await Promise.all([
+      fetch('https://api.github.com/repos/'+REPO),
+      fetch('https://api.github.com/repos/'+REPO+'/contents')
+    ]);
+
+    if(!repoRes.ok) throw new Error('not found');
+
+    const repo=await repoRes.json();
+    const contents=contentsRes.ok ? await contentsRes.json() : [];
+
+    // Build file list (top-level files only, max 8)
+    const files=Array.isArray(contents)
+      ? contents.filter(f=>f.type==='file').slice(0,8)
+      : [];
+
+    // Format numbers
+    const stars=repo.stargazers_count||0;
+    const forks=repo.forks_count||0;
+    const updated=repo.pushed_at
+      ? new Date(repo.pushed_at).toLocaleDateString('en-GB',{month:'short',year:'numeric'})
+      : '—';
+    const desc=repo.description||'Enterprise integration flows built with Magic XPI.';
+    const lang=repo.language||'XML';
+
+    // Build card HTML
+    const filesHTML=files.length
+      ? `<div class="work-card-files">
+          <p class="work-card-files-label">Files</p>
+          <div class="file-list">
+            ${files.map(f=>`<span class="file-chip">${f.name}</span>`).join('')}
+          </div>
+        </div>`
+      : '';
+
+    const card=document.createElement('a');
+    card.href=REPO_URL;
+    card.target='_blank';
+    card.className='work-card reveal';
+    card.innerHTML=`
+      <div class="work-card-top">
+        <span class="work-card-name">
+          <svg class="gh-icon" width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+            0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+            -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+            .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+            -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27
+            .68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12
+            .51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
+            0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          ${repo.name}
+        </span>
+        <span style="font-family:'DM Mono',monospace;font-size:.58rem;color:var(--muted);">${updated}</span>
+      </div>
+      <p class="work-card-desc">${desc}</p>
+      <div class="work-card-meta">
+        <span class="work-meta-item">
+          <span class="lang-dot" style="background:${langColor(lang)}"></span>${lang}
+        </span>
+        ${stars>0?`<span class="work-meta-item">★ ${stars}</span>`:''}
+        ${forks>0?`<span class="work-meta-item">⑂ ${forks}</span>`:''}
+        <span class="work-meta-item">↗ View on GitHub</span>
+      </div>
+      ${filesHTML}
+    `;
+
+    loadingEl.style.display='none';
+    section.appendChild(card);
+
+    // Trigger reveal
+    requestAnimationFrame(()=>requestAnimationFrame(()=>card.classList.add('in')));
+
+  }catch(err){
+    loadingEl.style.display='none';
+    errorEl.style.display='block';
+
+    // Fallback static card
+    const card=document.createElement('a');
+    card.href=REPO_URL;
+    card.target='_blank';
+    card.className='work-card reveal';
+    card.innerHTML=`
+      <div class="work-card-top">
+        <span class="work-card-name">
+          <svg class="gh-icon" width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+            0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+            -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+            .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+            -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27
+            .68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12
+            .51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
+            0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          XPI_DUMP
+        </span>
+        <span style="font-family:'DM Mono',monospace;font-size:.58rem;color:var(--muted);">↗</span>
+      </div>
+      <p class="work-card-desc">Enterprise integration flows built with Magic XPI during my internship at Magic Software Enterprises.</p>
+      <div class="work-card-meta">
+        <span class="work-meta-item"><span class="lang-dot" style="background:#0060ac"></span>XML</span>
+        <span class="work-meta-item">↗ View on GitHub</span>
+      </div>
+    `;
+    errorEl.style.display='none';
+    section.appendChild(card);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>card.classList.add('in')));
+  }
+}
+loadXPI();
+
+/* ── REVEAL ─── */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
