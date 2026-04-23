@@ -1,851 +1,201 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="day">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Durgesh Deore</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+<!-- ═══════════════════════════════════════════════
+     DURGESH DEORE — GitHub Profile README
+     Mirrors portfolio: EB Garamond · DM Mono aesthetic
+     ═══════════════════════════════════════════════ -->
 
-:root{
-  --bg:#f9f8f6;--fg:#1a1a18;--muted:#888;--border:#e2e0dc;--red:#c0392b;
-  --card-bg:#f4f3f0;--skill-icon-bg:#eeede9;
-}
-[data-theme="night"]{
-  --bg:#111110;--fg:#e8e6e1;--muted:#555;--border:#2a2a28;--red:#e05a47;
-  --card-bg:#191918;--skill-icon-bg:#1e1e1c;
-}
-[data-theme="rain"]{
-  --bg:#0f1117;--fg:#cdd3db;--muted:#4a5568;--border:#1e2530;--red:#6eb5d4;
-  --card-bg:#131720;--skill-icon-bg:#1a2030;
-}
+<div align="center">
 
-html{font-size:16.5px;scroll-behavior:smooth;}
+# Durgesh Deore
 
-body{
-  background:var(--bg);color:var(--fg);
-  font-family:'EB Garamond',serif;line-height:1.7;
-  max-width:660px;margin:auto;padding:0 28px;
-  transition:background .5s,color .5s;
-}
+*Software Developer · Pune, Maharashtra*
 
-/* ── LOADER ─── */
-#loader{
-  position:fixed;inset:0;z-index:999;
-  background:var(--fg);
-  display:flex;align-items:center;justify-content:center;
-  transition:opacity .6s ease;
-}
-#loader.out{opacity:0;pointer-events:none;}
-#loading-text{
-  font-family:'EB Garamond',serif;font-style:italic;
-  font-size:clamp(2rem,8vw,3.8rem);
-  color:var(--bg);letter-spacing:-.01em;
-  transition:opacity .12s;
-}
+<br>
 
-/* ── GREETING BAR ─── */
-#greeting-bar{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:9px 28px;
-  background:var(--bg);border-bottom:1px solid var(--border);
-  font-family:'DM Mono',monospace;font-size:.65rem;
-  color:var(--muted);letter-spacing:.04em;
-  transition:background .5s,border-color .5s;
-}
-#ticker{transition:opacity .25s;}
-#bar-right{display:flex;gap:14px;align-items:center;}
-#live-dot{width:5px;height:5px;border-radius:50%;background:var(--red);
-  display:inline-block;animation:pulse 2s ease-in-out infinite;}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
+[![Email](https://img.shields.io/badge/durgeshdeore214%40gmail.com-1a1a18?style=flat-square&logo=gmail&logoColor=c0392b&labelColor=1a1a18&color=1a1a18)](mailto:durgeshdeore214@gmail.com)&nbsp;
+[![LinkedIn](https://img.shields.io/badge/linkedin.com%2Fin%2Fdurgeshdeore-1a1a18?style=flat-square&logo=linkedin&logoColor=c0392b&labelColor=1a1a18&color=1a1a18)](https://linkedin.com/in/durgeshdeore)&nbsp;
+[![GitHub](https://img.shields.io/badge/DurgeshDeore-1a1a18?style=flat-square&logo=github&logoColor=c0392b&labelColor=1a1a18&color=1a1a18)](https://github.com/DurgeshDeore)&nbsp;
+[![GFG](https://img.shields.io/badge/Top_0.4%25_SPPU-1a1a18?style=flat-square&logo=geeksforgeeks&logoColor=c0392b&labelColor=1a1a18&color=1a1a18)](https://www.geeksforgeeks.org/user/durgeshdeore)&nbsp;
+[![Location](https://img.shields.io/badge/Pune%2C_MH_410507-1a1a18?style=flat-square&logoColor=c0392b&labelColor=1a1a18&color=1a1a18)](https://maps.app.goo.gl/pune)
 
-/* ── THEME TOGGLE BUTTON ─── */
-#theme-toggle{
-  background:none;border:1px solid var(--border);
-  color:var(--muted);font-family:'DM Mono',monospace;font-size:.6rem;
-  padding:3px 8px;cursor:pointer;letter-spacing:.06em;
-  transition:border-color .2s,color .2s,background .2s;
-  border-radius:2px;
-}
-#theme-toggle:hover{border-color:var(--red);color:var(--red);}
-
-main{padding-top:92px;padding-bottom:80px;}
-section{margin-bottom:72px;}
-
-.section-label{
-  font-family:'DM Mono',monospace;font-size:.62rem;
-  letter-spacing:.2em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:22px;
-}
-
-/* ── HERO ─── */
-.hero{display:flex;align-items:center;gap:20px;margin-bottom:64px;}
-.profile-wrap{
-  width:72px;height:72px;border-radius:50%;
-  border:1.5px solid var(--border);overflow:hidden;flex-shrink:0;
-}
-.profile-wrap img{width:100%;height:100%;object-fit:cover;}
-
-.site-name{font-size:2.4rem;font-weight:500;letter-spacing:-.02em;line-height:1.1;}
-.site-sub{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);margin-top:4px;}
-
-/* ── QUOTE SECTION ─── */
-#quote-section{
-  padding:28px 0 32px;
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  margin-bottom:72px;
-  position:relative;
-  min-height:120px;
-  display:flex;flex-direction:column;justify-content:center;
-}
-.quote-mark{
-  font-family:'EB Garamond',serif;font-size:4rem;
-  color:var(--border);line-height:0;position:absolute;
-  top:32px;left:-4px;pointer-events:none;
-  transition:color .5s;
-}
-#quote-text{
-  font-size:1.15rem;font-style:italic;line-height:1.75;
-  padding-left:2px;
-  transition:opacity .45s;
-}
-#quote-author{
-  font-family:'DM Mono',monospace;font-size:.62rem;
-  color:var(--muted);margin-top:14px;letter-spacing:.04em;
-  transition:opacity .45s;
-}
-#quote-dots{
-  display:flex;gap:6px;margin-top:18px;
-}
-.qdot{
-  width:5px;height:5px;border-radius:50%;
-  background:var(--border);cursor:pointer;
-  transition:background .2s;
-}
-.qdot.active{background:var(--red);}
-
-a.il{color:var(--fg);text-decoration:underline;text-decoration-color:var(--border);
-  text-underline-offset:3px;transition:color .2s,text-decoration-color .2s;}
-a.il:hover{color:var(--red);text-decoration-color:var(--red);}
-
-/* ── LINK LIST ─── */
-.link-list{display:flex;flex-direction:column;}
-.link-row{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:0;border-bottom:1px solid var(--border);
-  text-decoration:none;color:var(--fg);font-size:1rem;transition:color .2s;
-}
-.link-row:first-child{border-top:1px solid var(--border);}
-.link-row:hover{color:var(--red);}
-.link-row:hover .arr{transform:translate(3px,-3px);}
-.link-row:hover .contact-icon-wrap{border-color:var(--red);color:var(--red);}
-
-/* ── CONTACT CARD STYLE ─── */
-.contact-card{
-  display:flex;align-items:center;gap:16px;
-  padding:14px 0;width:100%;
-}
-.contact-icon-wrap{
-  width:38px;height:38px;border-radius:8px;
-  border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;transition:border-color .2s,color .2s;
-  color:var(--muted);
-}
-.contact-icon-wrap svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
-.contact-label{font-size:1rem;}
-.contact-meta{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--muted);margin-top:2px;}
-.arr{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--muted);
-  display:inline-block;transition:transform .2s;}
-
-/* ── ROWS (projects / experience / edu) ─── */
-.row{
-  padding:14px 0;border-bottom:1px solid var(--border);
-  display:grid;grid-template-columns:38px 1fr auto;
-  gap:14px;align-items:center;
-  text-decoration:none;color:var(--fg);transition:color .2s;
-}
-.row:first-of-type{border-top:1px solid var(--border);}
-.row:hover{color:var(--red);}
-.row:hover .arr{transform:translate(3px,-3px);}
-.row:hover .logo-wrap svg rect,.row:hover .logo-wrap svg circle{stroke:var(--red);}
-
-.logo-wrap{
-  width:34px;height:34px;border-radius:7px;
-  border:1px solid var(--border);overflow:hidden;flex-shrink:0;
-  transition:border-color .2s;
-}
-.row:hover .logo-wrap{border-color:var(--red);}
-.logo-wrap svg{width:100%;height:100%;}
-.logo-wrap img{width:100%;height:100%;object-fit:contain;}
-
-.row.no-logo{grid-template-columns:1fr auto;}
-
-.row-title{font-size:1rem;margin-bottom:2px;}
-.row-sub{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);line-height:1.65;}
-.row-right{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);
-  white-space:nowrap;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
-.row-right.accent{color:var(--red);}
-
-/* ── MY WORK ─── */
-.work-card{
-  border:1px solid var(--border);padding:18px 20px;
-  transition:border-color .2s;text-decoration:none;color:var(--fg);
-  display:block;margin-bottom:2px;
-}
-.work-card:hover{border-color:var(--red);}
-.work-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px;}
-.work-card-name{font-size:1rem;font-weight:500;display:flex;align-items:center;gap:8px;}
-.work-card-name .gh-icon{opacity:.45;flex-shrink:0;}
-.work-card-desc{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);line-height:1.7;margin-bottom:12px;}
-.work-card-meta{display:flex;gap:16px;flex-wrap:wrap;}
-.work-meta-item{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--muted);
-  display:flex;align-items:center;gap:5px;}
-.lang-dot{width:8px;height:8px;border-radius:50%;display:inline-block;}
-.work-card-files{margin-top:12px;padding-top:12px;border-top:1px solid var(--border);}
-.work-card-files-label{font-family:'DM Mono',monospace;font-size:.56rem;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
-.file-list{display:flex;flex-wrap:wrap;gap:6px;}
-.file-chip{
-  font-family:'DM Mono',monospace;font-size:.58rem;
-  padding:3px 9px;border:1px solid var(--border);color:var(--muted);
-  transition:border-color .2s,color .2s;
-}
-.work-card:hover .file-chip{border-color:rgba(192,57,43,.3);}
-#xpi-loading,#xpi-error{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);padding:16px 0;}
-
-/* ── SKILLS (Icon Grid Style) ─── */
-.skills-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(72px,1fr));
-  gap:10px;
-}
-.skill-chip{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:7px;padding:12px 8px 10px;
-  border:1px solid var(--border);border-radius:8px;
-  background:var(--skill-icon-bg);
-  transition:border-color .2s,transform .2s,box-shadow .2s;
-  cursor:default;
-}
-.skill-chip:hover{
-  border-color:var(--red);
-  transform:translateY(-2px);
-  box-shadow:0 4px 16px rgba(0,0,0,.08);
-}
-.skill-chip svg{width:22px;height:22px;}
-.skill-chip-label{
-  font-family:'DM Mono',monospace;font-size:.52rem;
-  color:var(--muted);text-align:center;letter-spacing:.02em;line-height:1.3;
-}
-.skills-cat-label{
-  font-family:'DM Mono',monospace;font-size:.58rem;
-  color:var(--muted);letter-spacing:.14em;text-transform:uppercase;
-  margin:18px 0 10px;
-}
-.skills-cat-label:first-child{margin-top:0;}
-
-/* ── FOOTER ─── */
-footer{
-  padding:28px 0 48px;border-top:1px solid var(--border);
-  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
-  font-family:'DM Mono',monospace;font-size:.6rem;color:var(--muted);
-}
-
-/* ── REVEAL ─── */
-.reveal{opacity:0;transform:translateY(10px);transition:.5s;}
-.reveal.in{opacity:1;transform:none;}
-
-@media(max-width:480px){
-  body{padding:0 18px;}
-  #greeting-bar{padding:9px 18px;}
-  .row{grid-template-columns:30px 1fr auto;}
-  .logo-wrap{width:30px;height:30px;}
-  .skills-grid{grid-template-columns:repeat(auto-fill,minmax(62px,1fr));gap:8px;}
-}
-</style>
-</head>
-<body>
-
-<!-- LOADER -->
-<div id="loader"><span id="loading-text">Hello</span></div>
-
-<!-- GREETING BAR -->
-<div id="greeting-bar">
-  <span id="ticker">Good morning</span>
-  <div id="bar-right">
-    <span id="live-dot"></span>
-    <!-- <span id="theme-info">Pune, MH</span> -->
-    <span id="bar-time">00:00</span>
-    <button id="theme-toggle" title="Toggle theme">☀ Day</button>
-  </div>
 </div>
 
-<main>
+<br>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="profile-wrap">
-      <img src="src/img/profile.jpg" alt="Durgesh Deore">
-    </div>
-    <div>
-      <h1 class="site-name">Durgesh Deore</h1>
-      <p class="site-sub">Software Developer · Pune, Maharashtra</p>
-    </div>
-  </section>
+---
 
-  <!-- ROTATING QUOTE -->
-  <section id="quote-section" class="reveal">
-    <span class="quote-mark">"</span>
-    <p id="quote-text"></p>
-    <p id="quote-author"></p>
-    <div id="quote-dots"></div>
-  </section>
+### `EDUCATION`
 
-  <!-- EXPERIENCE -->
-  <section id="experience" class="reveal">
-    <p class="section-label">Experience</p>
-    <div class="row no-logo" style="grid-template-columns:1fr auto;">
-      <div>
-        <p class="row-title">SDE Intern — Magic Software Enterprises</p>
-        <p class="row-sub">PS Team · Magic XPI </p>
-      </div>
-      <span class="row-right">2025–26</span>
-    </div>
-  </section>
+| | | |
+|---|---|---|
+| **Master of Computer Application** | Dr. D Y Patil Institute of Management & Entrepreneurship · Pune | `Sep 2024 – May 2026` |
+| **Bachelor of Computer Application** | KTHM College, Nashik &nbsp;·&nbsp; SGPA 8.25 | `Sep 2021 – May 2024` |
 
-  <!-- PROJECTS -->
-  <section class="reveal">
-    <p class="section-label">Projects</p>
+<br>
 
-    <a href="https://github.com/DurgeshDeore/TestSphere" target="_blank" class="row">
-      <div class="logo-wrap">
-        <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="34" height="34" fill="#0a0a0a"/>
-          <circle cx="17" cy="17" r="9" stroke="#c0392b" stroke-width="1.5"/>
-          <circle cx="17" cy="17" r="4" fill="#c0392b"/>
-          <line x1="17" y1="4" x2="17" y2="8" stroke="#c0392b" stroke-width="1.2"/>
-          <line x1="17" y1="26" x2="17" y2="30" stroke="#c0392b" stroke-width="1.2"/>
-          <line x1="4" y1="17" x2="8" y2="17" stroke="#c0392b" stroke-width="1.2"/>
-          <line x1="26" y1="17" x2="30" y2="17" stroke="#c0392b" stroke-width="1.2"/>
-        </svg>
-      </div>
-      <div>
-        <p class="row-title">TestSphere</p>
-        <p class="row-sub">Online Coding Platform · Custom Test Platform<br>React · Node.js · MongoDB · Judge0 API</p>
-      </div>
-      <div class="row-right"><span>Present</span><span class="arr">↗</span></div>
-    </a>
+---
 
-    <a href="https://github.com/DurgeshDeore/SolveDoku" target="_blank" class="row">
-      <div class="logo-wrap">
-        <img src="src/icon/ic_solvedoku_logo.png" alt="SolveDoku logo">
-      </div>
-      <div>
-        <p class="row-title">SolveDoku</p>
-        <p class="row-sub">Android Sudoku solver · backtracking · O(1) space<br>Java · XML · Android Studio · Backtracking Algorithm</p>
-      </div>
-      <div class="row-right"><span>2025</span><span class="arr">↗</span></div>
-    </a>
+### `RELEVANT COURSEWORK`
 
-    <a href="https://github.com/DurgeshDeore/Farm-Assist-Project/tree/main" target="_blank" class="row">
-      <div class="logo-wrap">
-        <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="34" height="34" fill="#0a0a0a"/>
-          <path d="M17 28 C17 28 7 22 7 13 C7 8 12 6 17 10 C22 6 27 8 27 13 C27 22 17 28 17 28Z"
-            fill="rgba(192,57,43,.12)" stroke="#c0392b" stroke-width="1.2"/>
-          <line x1="17" y1="28" x2="17" y2="14" stroke="#c0392b" stroke-width="1"/>
-        </svg>
-      </div>
-      <div>
-        <p class="row-title">FarmAssist</p>
-        <p class="row-sub">Full-stack e-commerce for farmers · weather API<br>Java · JSP · HTML/CSS · MySQL</p>
-      </div>
-      <div class="row-right"><span>2024</span><span class="arr">↗</span></div>
-    </a>
-  </section>
+**Core CS** &nbsp;—&nbsp;
+`DSA` &nbsp;`Operating Systems` &nbsp;`DBMS` &nbsp;`Computer Networks` &nbsp;`Software Engineering`
 
-  <!-- MY WORK -->
-  <section id="my-work" class="reveal">
-    <p class="section-label">Work</p>
-    <div id="xpi-loading">Fetching repository…</div>
-    <div id="xpi-error" style="display:none;">Could not load repository.</div>
-  </section>
+**Development** &nbsp;—&nbsp;
+`Web Programming` &nbsp;`Android Programming`
 
-  <!-- SKILLS (Icon Grid) -->
-  <section class="reveal">
-    <p class="section-label">Skills</p>
+<br>
 
-    <p class="skills-cat-label">Languages</p>
-    <div class="skills-grid">
-      <!-- Java -->
-      <div class="skill-chip">
-        <svg viewBox="0 0 32 32" fill="none">
-          <path d="M12 24s-2 1.2-1 1.6c3 1.1 11.4 1.4 13-.1 0 0 .5-.5-1-.9-4.5-1.2-3 0-11 -.6z" fill="#5382A1"/>
-          <path d="M11 21s-2.2 1.5-.7 1.8c4.5 1.4 9.5 1.5 13.4.5 0 0 .8-.7-1-1.2-4.4-1.3-7.5-1.1-11.7-1.1z" fill="#5382A1"/>
-          <path d="M17.5 8C14 12 19 14 19 14s-5-3 2-7c0 0-1.5 1-3.5 1z" fill="#E76F00"/>
-          <path d="M21.5 26.7s1.5.8-1.5 1.5c-5.5 1.5-14 .8-16.5-.1-1-.4 1-1 1.5-1 .8-.2 1.3 0 1.3 0-2-.7-6.5-2 1-2.8 7-1.2 16.2.5 14.2 2.4z" fill="#5382A1"/>
-          <path d="M13.5 5.5C13.5 5.5 8 7 10.5 12.5c1.5 3.5 5 4.5 4.5 8.5 2-2.5.5-5.5-1.5-7.5s-4-3-4.5-6 4.5-2 4.5-2z" fill="#E76F00"/>
-          <path d="M22 22s1.5 1-2 1.8c-5.5 1.3-14 1.5-16.5.5-1-.3.5-1 1.5-1.2.5-.1 1-.2 1-.2-2-.5-6-1.5.8-2.2 7-1 16.5.5 15.2 1.3z" fill="#5382A1"/>
-        </svg>
-        <span class="skill-chip-label">Java</span>
-      </div>
-      <!-- JavaScript -->
-      <div class="skill-chip">
-        <svg viewBox="0 0 32 32" fill="none">
-          <rect x="3" y="3" width="26" height="26" rx="2" fill="#F7DF1E"/>
-          <path d="M18.5 22.5c.5 1 1.2 1.7 2.5 1.7 1 0 1.7-.5 1.7-1.2 0-.8-.7-1.1-1.8-1.6l-.6-.3c-1.8-.8-3-1.7-3-3.7 0-1.8 1.4-3.2 3.5-3.2 1.5 0 2.6.5 3.4 1.9l-1.8 1.2c-.4-.8-.9-1-1.6-1-.7 0-1.1.4-1.1 1 0 .7.4 1 1.5 1.4l.6.3c2.1.9 3.3 1.8 3.3 3.8 0 2.2-1.7 3.4-4 3.4-2.2 0-3.6-1-4.3-2.4l1.7-1z" fill="#000"/>
-          <path d="M10 22.7c.4.7.7 1.2 1.5 1.2.8 0 1.2-.3 1.2-1.5V15h2.2v7.5c0 2.5-1.4 3.6-3.5 3.6-1.9 0-3-1-3.5-2.2L10 22.7z" fill="#000"/>
-        </svg>
-        <span class="skill-chip-label">JS</span>
-      </div>
-      <!-- C -->
-      <div class="skill-chip">
-        <svg viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="13" stroke="var(--fg)" stroke-width="1.5" opacity=".3"/>
-          <text x="16" y="21" text-anchor="middle" font-family="EB Garamond,serif" font-size="14" fill="var(--fg)" font-style="italic">C</text>
-        </svg>
-        <span class="skill-chip-label">C</span>
-      </div>
-      <!-- SQL -->
-      <div class="skill-chip">
-        <svg viewBox="0 0 32 32" fill="none">
-          <ellipse cx="16" cy="10" rx="10" ry="4" stroke="var(--fg)" stroke-width="1.5" opacity=".5"/>
-          <path d="M6 10v6c0 2.2 4.5 4 10 4s10-1.8 10-4v-6" stroke="var(--fg)" stroke-width="1.5" opacity=".5"/>
-          <path d="M6 16v6c0 2.2 4.5 4 10 4s10-1.8 10-4v-6" stroke="var(--fg)" stroke-width="1.5" opacity=".5"/>
-        </svg>
-        <span class="skill-chip-label">SQL</span>
-      </div>
-    </div>
+---
 
-    <p class="skills-cat-label">Frontend</p>
-    <div class="skills-grid">
-      <!-- React -->
-      <div class="skill-chip">
-        <svg viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="2.5" fill="#61DAFB"/>
-          <ellipse cx="16" cy="16" rx="12" ry="5" stroke="#61DAFB" stroke-width="1.2"/>
-          <ellipse cx="16" cy="16" rx="12" ry="5" stroke="#61DAFB" stroke-width="1.2" transform="rotate(60 16 16)"/>
-          <ellipse cx="16" cy="16" rx="12" ry="5" stroke="#61DAFB" stroke-width="1.2" transform="rotate(120 16 16)"/>
-        </svg>
-        <span class="skill-chip-label">React</span>
-      </div>
-      <!-- HTML5 -->
-      <div class="skill-chip">
-        <svg viewBox="0 0 32 32" fill="none">
-          <path d="M5 4l2.2 24 8.8 2.4 8.8-2.4L27 4H5z" fill="#E34F26"/>
-          <path d="M16 27.6V6.5h9l-1.9 20.8L16 27.6z" fill="#EF652A"/>
-          <path d="M16 13.5h4.5l.3-3.5H16V6.5h8.5L24 23l-8 2.2V19.5l5-.2.4-5.8H16z" fill="white"/>
-          <path d="M16 13.5v3.5H11.5l-.4-4.5H16V6.5H7.5l.4 4.5H16v2.5z" fill="#EBEBEB"/>
-        </svg>
-        <span class="skill-chip-label">HTML5</span>
-      </div>
-      <!-- CSS3 -->
-      <div class="skill-chip">
-        <svg viewBox="0 0 32 32" fill="none">
-          <path d="M5 4l2.2 24 8.8 2.4 8.8-2.4L27 4H5z" fill="#1572B6"/>
-          <path d="M16 27.6V6.5h9l-1.9 20.8L16 27.6z" fill="#33A9DC"/>
-          <path d="M16 13.5h4.5l.3-3.5H16V6.5h8.5L24 23l-8 2.2V19.5l5-.2.4-5.8H16z" fill="white"/>
-          <path d="M16 13.5v3.5H11.5l-.4-4.5H16V6.5H7.5l.4 4.5H16v2.5z" fill="#EBEBEB"/>
-        </svg>
-        <span class="skill-chip-label">CSS3</span>
-      </div>
-      <!-- Bootstrap -->
-      <div class="skill-chip">
-        <svg viewBox="0 0 32 32" fill="none">
-          <rect x="4" y="4" width="24" height="24" rx="6" fill="#7952B3"/>
-          <path d="M10 8h7.5a4 4 0 0 1 4 4 3.5 3.5 0 0 1-2 3.2 4 4 0 0 1 2.5 3.8A4.5 4.5 0 0 1 17.5 24H10V8z" fill="white"/>
-          <path d="M13 11v4h4a2 2 0 0 0 0-4h-4zm0 7v4.5h4.5a2.25 2.25 0 0 0 0-4.5H13z" fill="#7952B3"/>
-        </svg>
-        <span class="skill-chip-label">Bootstrap</span>
-      </div>
-    </div>
+### `EXPERIENCE`
 
-    <p class="skills-cat-label">Backend & DB</p>
-    <div class="skills-grid">
-      <!-- Node.js -->
-      <div class="skill-chip">
-        <svg viewBox="0 0 32 32" fill="none">
-          <path d="M16 3L4 10v12l12 7 12-7V10L16 3z" fill="#339933" opacity=".15" stroke="#339933" stroke-width="1.5"/>
-          <path d="M16 9v8l6 3.5" stroke="#339933" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        <span class="skill-chip-label">Node.js</span>
-      </div>
-      <!-- MongoDB -->
-      <div class="skill-chip">
-        <svg viewBox="0 0 32 32" fill="none">
-          <path d="M16 4c0 0-8 6-8 14 0 4.4 3.6 8 8 10 4.4-2 8-5.6 8-10 0-8-8-14-8-14z" fill="#4DB33D" opacity=".2" stroke="#4DB33D" stroke-width="1.5"/>
-          <line x1="16" y1="28" x2="16" y2="18" stroke="#4DB33D" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        <span class="skill-chip-label">MongoDB</span>
-      </div>
-      <!-- MySQL -->
-      <div class="skill-chip">
-        <svg viewBox="0 0 32 32" fill="none">
-          <ellipse cx="16" cy="9" rx="10" ry="3.5" fill="#00758F" opacity=".2" stroke="#00758F" stroke-width="1.3"/>
-          <path d="M6 9v7c0 1.9 4.5 3.5 10 3.5S26 17.9 26 16V9" stroke="#00758F" stroke-width="1.3"/>
-          <path d="M6 16v7c0 1.9 4.5 3.5 10 3.5S26 24.9 26 23v-7" stroke="#00758F" stroke-width="1.3"/>
-        </svg>
-        <span class="skill-chip-label">MySQL</span>
-      </div>
-      <!-- Express -->
-      <div class="skill-chip">
-        <svg viewBox="0 0 32 32" fill="none">
-          <text x="5" y="21" font-family="DM Mono,monospace" font-size="9" fill="var(--fg)" opacity=".7">Ex</text>
-          <path d="M6 24h20M6 16h14M6 8h18" stroke="var(--fg)" stroke-width="1.3" stroke-linecap="round" opacity=".3"/>
-        </svg>
-        <span class="skill-chip-label">Express</span>
-      </div>
-      <!-- PostgreSQL -->
-      <div class="skill-chip">
-        <svg viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="14" r="8" stroke="#336791" stroke-width="1.5" opacity=".6"/>
-          <path d="M12 14c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke="#336791" stroke-width="1.3" opacity=".8"/>
-          <line x1="16" y1="22" x2="16" y2="28" stroke="#336791" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
-        </svg>
-        <span class="skill-chip-label">PostgreSQL</span>
-      </div>
-      <!-- Magic XPI -->
-      <!-- <div class="skill-chip">
-        <svg viewBox="0 0 32 32" fill="none">
-          <path d="M6 16h4l3-6 4 12 3-6h6" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span class="skill-chip-label">Magic XPI</span>
-      </div> -->
-    </div>
+**Magic Software Enterprises** &emsp; `Aug 2025 – Feb 2026`
 
-    <p class="skills-cat-label">Tools</p>
-    <div class="skills-grid">
-      <!-- Git -->
-      <div class="skill-chip">
-        <svg viewBox="0 0 32 32" fill="none">
-          <path d="M28.5 14.5L17.5 3.5a1.7 1.7 0 0 0-2.4 0L13 5.7l3 3a2 2 0 0 1 2.5 2.5l2.9 2.9a2 2 0 1 1-1.2 1.2L17.5 13v7.2a2 2 0 1 1-1.7 0V12.8a2 2 0 0 1-1.1-2.6L11.8 7.3l-8.3 8.3a1.7 1.7 0 0 0 0 2.4l11 11a1.7 1.7 0 0 0 2.4 0l11.6-11.6a1.7 1.7 0 0 0 0-2.4z" fill="#F05032" opacity=".8"/>
-        </svg>
-        <span class="skill-chip-label">Git</span>
-      </div>
-      <!-- Postman -->
-      <div class="skill-chip">
-        <svg viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="11" fill="#FF6C37" opacity=".15" stroke="#FF6C37" stroke-width="1.5"/>
-          <path d="M11 16l5-5 5 5-5 5-5-5z" stroke="#FF6C37" stroke-width="1.3"/>
-          <path d="M16 11v10M11 16h10" stroke="#FF6C37" stroke-width="1" opacity=".5"/>
-        </svg>
-        <span class="skill-chip-label">Postman</span>
-      </div>
-      <!-- Android Studio -->
-      <div class="skill-chip">
-        <svg viewBox="0 0 32 32" fill="none">
-          <path d="M10 18a6 6 0 0 1 12 0" stroke="#3DDC84" stroke-width="1.5" stroke-linecap="round"/>
-          <circle cx="11" cy="18" r="1.5" fill="#3DDC84"/>
-          <circle cx="21" cy="18" r="1.5" fill="#3DDC84"/>
-          <line x1="9" y1="14" x2="7" y2="10" stroke="#3DDC84" stroke-width="1.2" stroke-linecap="round"/>
-          <line x1="23" y1="14" x2="25" y2="10" stroke="#3DDC84" stroke-width="1.2" stroke-linecap="round"/>
-          <rect x="11" y="20" width="10" height="7" rx="2" stroke="#3DDC84" stroke-width="1.2"/>
-          <line x1="14" y1="27" x2="13" y2="29" stroke="#3DDC84" stroke-width="1.2" stroke-linecap="round"/>
-          <line x1="18" y1="27" x2="19" y2="29" stroke="#3DDC84" stroke-width="1.2" stroke-linecap="round"/>
-        </svg>
-        <span class="skill-chip-label">Android</span>
-      </div>
-      <!-- VS Code -->
-      <div class="skill-chip">
-        <svg viewBox="0 0 32 32" fill="none">
-          <path d="M24 4l-14 12 14 12V4z" fill="#007ACC" opacity=".15"/>
-          <path d="M24 4L10 16m14-12L8 10l-4 6 4 6 16 10V4zM10 16l14 12" stroke="#007ACC" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span class="skill-chip-label">VS Code</span>
-      </div>
-      <!-- JMeter -->
-      <div class="skill-chip">
-        <svg viewBox="0 0 32 32" fill="none">
-          <path d="M6 22l5-10 5 6 4-8 6 12" stroke="#D22128" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="26" cy="10" r="3" fill="#D22128" opacity=".2" stroke="#D22128" stroke-width="1"/>
-        </svg>
-        <span class="skill-chip-label">JMeter</span>
-      </div>
-    </div>
-  </section>
+*Software Development Engineer Intern · PS Team · Pune*
 
-  <!-- RECOGNITION -->
-  <section id="recognition" class="reveal">
-    <p class="section-label">Recognition</p>
-    <div class="row no-logo" style="grid-template-columns:1fr auto;">
-      <div>
-        <p class="row-title">GeeksForGeeks — SPPU Rankings</p>
-        <p class="row-sub">48th out of 11,200+ students across Savitribai Phule Pune University</p>
-      </div>
-      <span class="row-right accent">Top&nbsp;0.4%</span>
-    </div>
-  </section>
+— Built and maintained scalable APIs for enterprise clients with secure Magic XPI integrations  
+— Implemented data confidentiality measures; performed API validation & performance testing using JMeter  
+— Leveraged MS SQL Server to analyze production data, support debugging, and validate system integrity  
+— Collaborated cross-functionally to deliver rapid fixes that enhanced system stability on production
 
-  <!-- EDUCATION -->
-  <section class="reveal">
-    <p class="section-label">Education</p>
-    <div class="row no-logo" style="grid-template-columns:1fr auto;">
-      <div>
-        <p class="row-title">Master of Computer Applications</p>
-        <p class="row-sub">Dr. D Y Patil Institute of Management &amp; Entrepreneurship, Pune</p>
-      </div>
-      <span class="row-right">2024–26</span>
-    </div>
-    <div class="row no-logo" style="grid-template-columns:1fr auto;">
-      <div>
-        <p class="row-title">Bachelor of Computer Applications</p>
-        <p class="row-sub">KTHM College, Nashik · SGPA 8.25</p>
-      </div>
-      <span class="row-right">2021–24</span>
-    </div>
-  </section>
+<br>
 
-</main>
+---
 
-<!-- CONTACT -->
-<section class="reveal" style="margin-bottom:0;">
-  <p class="section-label">Contact</p>
-  <div class="link-list">
-    <a href="/cdn-cgi/l/email-protection#8aeefff8edeff9e2eeefe5f8efb8bbbecaede7ebe3e6a4e9e5e7" class="link-row">
-      <div class="contact-card">
-        <div class="contact-icon-wrap">
-          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-        </div>
-        <div>
-          <p class="contact-label">Email</p>
-          <p class="contact-meta">durgeshdeore@example.com</p>
-        </div>
-      </div>
-      <span class="arr">↗</span>
-    </a>
-    <a href="https://www.linkedin.com/in/durgeshdeore" target="_blank" class="link-row">
-      <div class="contact-card">
-        <div class="contact-icon-wrap">
-          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>
-        </div>
-        <div>
-          <p class="contact-label">LinkedIn</p>
-          <p class="contact-meta">linkedin.com/in/durgeshdeore</p>
-        </div>
-      </div>
-      <span class="arr">↗</span>
-    </a>
-    <a href="https://github.com/DurgeshDeore" target="_blank" class="link-row">
-      <div class="contact-card">
-        <div class="contact-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-        </div>
-        <div>
-          <p class="contact-label">GitHub</p>
-          <p class="contact-meta">github.com/DurgeshDeore</p>
-        </div>
-      </div>
-      <span class="arr">↗</span>
-    </a>
-    <a href="/src/doc/resume.pdf" target="_blank" class="link-row">
-      <div class="contact-card">
-        <div class="contact-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
-        </div>
-        <div>
-          <p class="contact-label">Resume</p>
-          <p class="contact-meta">Download PDF</p>
-        </div>
-      </div>
-      <span class="arr">↗</span>
-    </a>
-    <a href="tel:+917666946207" class="link-row">
-      <div class="contact-card">
-        <div class="contact-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l.86-.86a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        </div>
-        <div>
-          <p class="contact-label">Phone</p>
-          <p class="contact-meta">+91 7666 946207</p>
-        </div>
-      </div>
-      <span class="arr">↗</span>
-    </a>
-  </div>
-</section>
+### `PROJECTS`
 
-<footer>
-  <span>Durgesh Deore · 2025</span>
-  <!-- <span id="footer-theme">Theme: day</span>
-  <span>Pune 🇮🇳</span> -->
-</footer>
+<table>
+<tr>
+<td width="38px" align="center">🎯</td>
+<td>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-<script>
-/* ── LOADER ─── */
-const greetings=["Hello","नमस्ते","नमस्कार","Hola","Buenos días","Bonjour","Hallo","Guten Tag","Ciao","Buongiorno","Olá","Oi","你好","こんばんは","안녕하세요","Привет","Здравствуйте","Shalom","Habari","Merhaba","Szia","Xin chào","สวัสดี","God dag","Hej","Ahoj","Bună","Yassou","ਸਤ ਸ੍ਰੀ ਅਕਾਲ"];
-const loadEl=document.getElementById('loading-text');
-let li=0;const INTV=90;
-const loopI=setInterval(()=>{
-  loadEl.style.opacity='0';
-  setTimeout(()=>{loadEl.textContent=greetings[li];loadEl.style.opacity='1';li=(li+1)%greetings.length;},20);
-},INTV);
-setTimeout(()=>{
-  clearInterval(loopI);
-  document.getElementById('loader').classList.add('out');
-  setTimeout(()=>document.getElementById('loader').style.display='none',700);
-},greetings.length*INTV+300);
+**[TestSphere](https://github.com/DurgeshDeore/TestSphere)** &emsp; `Present`
 
-/* ── TICKER ─── */
-const msgs=["नमस्ते — Welcome","Hello from Pune","Hola! Bienvenido","Bonjour!","こんにちは","안녕하세요","你好","Ciao!","Привет!","Hallo!"];
-let ti=0;
-const tickEl=document.getElementById('ticker');
-function nextTick(){tickEl.style.opacity='0';setTimeout(()=>{tickEl.textContent=msgs[ti];tickEl.style.opacity='1';ti=(ti+1)%msgs.length;},250);}
-nextTick();setInterval(nextTick,3000);
+`React.js` `Express.js` `Node.js` `MongoDB` `Judge0`
 
-/* ── CLOCK ─── */
-function tick(){
-  const n=new Date();
-  document.getElementById('bar-time').textContent=String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');
-}
-tick();setInterval(tick,30000);
+— Developed secure authentication using Email (OTP) verification  
+— Real-time creation and evaluation of test cases with customizable question formats
 
-/* ── ROTATING QUOTES ─── */
-const quotes=[
-  {
-    text:"Live as if you were to die tomorrow. Learn as if you were to live forever.",
-    author:"— Mahatma Gandhi"
-  },
-  {
-    text:"The person who works with their hands is a laborer. The person who works with their hands and mind is a craftsman. The person who works with their hands, mind, and heart is an ARTIST.",
-    author:"— Francis of Assisi"
-  },
-  {
-    text:"The only way to do great work is to love what you do.",
-    author:"— Steve Jobs"
-  },
-  {
-    text:"First, solve the problem. Then, write the code.",
-    author:"— John Johnson"
-  },
-  {
-    text:"Simplicity is the soul of efficiency.",
-    author:"— Austin Freeman"
-  }
-];
+</td>
+</tr>
 
-let currentQuote=0;
-const quoteText=document.getElementById('quote-text');
-const quoteAuthor=document.getElementById('quote-author');
-const dotsContainer=document.getElementById('quote-dots');
+<tr><td colspan="2"><br></td></tr>
 
-function buildDots(){
-  dotsContainer.innerHTML='';
-  quotes.forEach((_,i)=>{
-    const d=document.createElement('span');
-    d.className='qdot'+(i===currentQuote?' active':'');
-    d.onclick=()=>showQuote(i);
-    dotsContainer.appendChild(d);
-  });
-}
+<tr>
+<td width="38px" align="center">🧩</td>
+<td>
 
-function showQuote(idx,animate=true){
-  currentQuote=idx;
-  if(animate){
-    quoteText.style.opacity='0';quoteAuthor.style.opacity='0';
-    setTimeout(()=>{
-      quoteText.textContent=quotes[idx].text;
-      quoteAuthor.textContent=quotes[idx].author;
-      quoteText.style.opacity='1';quoteAuthor.style.opacity='1';
-    },450);
-  }else{
-    quoteText.textContent=quotes[idx].text;
-    quoteAuthor.textContent=quotes[idx].author;
-  }
-  buildDots();
-}
+**[SolveDoku](https://github.com/DurgeshDeore/SolveDoku)** &emsp; `Jul 2025`
 
-showQuote(0,false);
-setInterval(()=>showQuote((currentQuote+1)%quotes.length),6000);
+`Java` `XML` `Android Studio` `DSA`
 
-/* ── THEME ─── */
-const themes=['day','night'];
-const themeLabels={day:'☀ Day',night:'☾ Night'};
-let manualTheme=null;
+— Backtracking-based algorithm to solve 9×9 Sudoku puzzles in real-time  
+— O(1) space complexity in-place; worst-case O(9ᵏ) time where k = empty cells  
+— Graceful handling of invalid inputs with real-time feedback
 
-function applyTheme(t){
-  const dataTheme=t==='day'?'default':t;
-  document.documentElement.setAttribute('data-theme',dataTheme);
-  document.getElementById('footer-theme').textContent='Theme: '+t;
-  document.getElementById('theme-info').textContent='Pune · '+t;
-  document.getElementById('theme-toggle').textContent=themeLabels[t];
-}
+</td>
+</tr>
 
-function autoTheme(){
-  const h=new Date().getHours();
-  if(h>=20||h<6) return 'night';
-  if(h>=6&&h<9) return 'day'; // dawn
-  return 'day';
-}
+<tr><td colspan="2"><br></td></tr>
 
-async function setTheme(){
-  if(manualTheme){applyTheme(manualTheme);return;}
-  let t=autoTheme();
-  try{
-    const r=await fetch('https://wttr.in/Pune?format=j1');
-    const d=await r.json();
-    const wc=parseInt(d.current_condition[0].weatherCode);
-    if(wc>=176&&wc<=395){t='rain';}
-  }catch(e){}
-  applyTheme(t);
-}
-setTheme();
+<tr>
+<td width="38px" align="center">🌱</td>
+<td>
 
-/* Manual toggle cycles day → night → rain → day */
-document.getElementById('theme-toggle').addEventListener('click',()=>{
-  const cur=document.documentElement.getAttribute('data-theme');
-  const curNorm=cur==='default'?'day':cur;
-  const idx=themes.indexOf(curNorm);
-  manualTheme=themes[(idx+1)%themes.length];
-  applyTheme(manualTheme);
-});
+**[FarmEasy](https://github.com/DurgeshDeore/Farm-Assist-Project/tree/main)** &emsp; `Jan 2024`
 
-/* ── GITHUB XPI INTEGRATION ─── */
-const REPO='DurgeshDeore/XPI_DUMP';
-const REPO_URL='https://github.com/'+REPO;
-function langColor(lang){const map={JavaScript:'#f1e05a',Java:'#b07219',Python:'#3572A5',XML:'#0060ac',HTML:'#e34c26',CSS:'#563d7c',TypeScript:'#2b7489',Shell:'#89e051'};return map[lang]||'#8a8a8a';}
+`Java` `JSP` `HTML/CSS` `JavaScript` `API`
 
-async function loadXPI(){
-  const loadingEl=document.getElementById('xpi-loading');
-  const errorEl=document.getElementById('xpi-error');
-  const section=document.getElementById('my-work');
-  try{
-    const[repoRes,contentsRes]=await Promise.all([fetch('https://api.github.com/repos/'+REPO),fetch('https://api.github.com/repos/'+REPO+'/contents')]);
-    if(!repoRes.ok)throw new Error('not found');
-    const repo=await repoRes.json();
-    const contents=contentsRes.ok?await contentsRes.json():[];
-    const files=Array.isArray(contents)?contents.filter(f=>f.type==='file').slice(0,8):[];
-    const stars=repo.stargazers_count||0;const forks=repo.forks_count||0;
-    const updated=repo.pushed_at?new Date(repo.pushed_at).toLocaleDateString('en-GB',{month:'short',year:'numeric'}):'—';
-    const desc=repo.description||'Enterprise integration flows built with Magic XPI.';
-    const lang=repo.language||'XML';
-    const filesHTML=files.length?`<div class="work-card-files"><p class="work-card-files-label">Files</p><div class="file-list">${files.map(f=>`<span class="file-chip">${f.name}</span>`).join('')}</div></div>`:'';
-    const card=document.createElement('a');
-    card.href=REPO_URL;card.target='_blank';card.className='work-card reveal';
-    card.innerHTML=`<div class="work-card-top"><span class="work-card-name"><svg class="gh-icon" width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>${repo.name}</span><span style="font-family:'DM Mono',monospace;font-size:.58rem;color:var(--muted);">${updated}</span></div><p class="work-card-desc">${desc}</p><div class="work-card-meta"><span class="work-meta-item"><span class="lang-dot" style="background:${langColor(lang)}"></span>${lang}</span>${stars>0?`<span class="work-meta-item">★ ${stars}</span>`:''}${forks>0?`<span class="work-meta-item">⑂ ${forks}</span>`:''}<span class="work-meta-item">↗ View on GitHub</span></div>${filesHTML}`;
-    loadingEl.style.display='none';section.appendChild(card);
-    requestAnimationFrame(()=>requestAnimationFrame(()=>card.classList.add('in')));
-  }catch(err){
-    loadingEl.style.display='none';
-    const card=document.createElement('a');
-    card.href=REPO_URL;card.target='_blank';card.className='work-card reveal';
-    card.innerHTML=`<div class="work-card-top"><span class="work-card-name"><svg class="gh-icon" width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>XPI_DUMP</span><span style="font-family:'DM Mono',monospace;font-size:.58rem;color:var(--muted);">↗</span></div><p class="work-card-desc">Enterprise integration flows built with Magic XPI during internship at Magic Software Enterprises.</p><div class="work-card-meta"><span class="work-meta-item"><span class="lang-dot" style="background:#0060ac"></span>XML</span><span class="work-meta-item">↗ View on GitHub</span></div>`;
-    errorEl.style.display='none';section.appendChild(card);
-    requestAnimationFrame(()=>requestAnimationFrame(()=>card.classList.add('in')));
-  }
-}
-loadXPI();
+— Full-stack e-commerce platform with user authentication and product browsing  
+— Integrated real-time weather data via external APIs  
+— Customer features: order tracking, cart, search &nbsp;·&nbsp; Admin: dashboard, product & user management
 
-/* ── REVEAL ─── */
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');}});
-},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-</script>
-</body>
-</html>
+</td>
+</tr>
+</table>
+
+<br>
+
+---
+
+### `TECHNICAL SKILLS`
+
+| | |
+|---|---|
+| **Languages** | Java &nbsp;·&nbsp; JavaScript ES6+ &nbsp;·&nbsp; C &nbsp;·&nbsp; SQL |
+| **Frontend** | React.js &nbsp;·&nbsp; HTML5 / CSS3 &nbsp;·&nbsp; Bootstrap 5 &nbsp;·&nbsp; XML |
+| **Backend** | Node.js &nbsp;·&nbsp; Express.js &nbsp;·&nbsp; RESTful APIs &nbsp;·&nbsp; JSP |
+| **Database** | MySQL &nbsp;·&nbsp; MongoDB &nbsp;·&nbsp; PostgreSQL |
+| **Tools** | Git / GitHub &nbsp;·&nbsp; VS Code &nbsp;·&nbsp; Eclipse &nbsp;·&nbsp; Android Studio &nbsp;·&nbsp; JMeter &nbsp;·&nbsp; Postman |
+| **Concepts** | DSA &nbsp;·&nbsp; OOP &nbsp;·&nbsp; DBMS &nbsp;·&nbsp; SDLC &nbsp;·&nbsp; MVC Architecture |
+
+<br>
+
+---
+
+### `RECOGNITION`
+
+| | |
+|---|---|
+| **GeeksForGeeks — SPPU Rankings** | 48th out of 11,200+ students across Savitribai Phule Pune University &emsp; **`Top 0.4%`** |
+
+<br>
+
+---
+
+### `GITHUB STATS`
+
+<div align="center">
+
+<img src="https://github-readme-stats.vercel.app/api?username=DurgeshDeore&show_icons=true&count_private=true&hide_border=true&title_color=1a1a18&text_color=1a1a18&icon_color=c0392b&bg_color=f9f8f6" height="160" alt="GitHub Stats"/>
+&nbsp;&nbsp;
+<img src="https://github-readme-streak-stats.herokuapp.com?user=DurgeshDeore&hide_border=true&ring=c0392b&fire=c0392b&currStreakLabel=1a1a18&sideLabels=888888&dates=888888&currStreakNum=1a1a18&sideNums=1a1a18&background=f9f8f6" height="160" alt="GitHub Streak"/>
+
+<br><br>
+
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=DurgeshDeore&bg_color=f9f8f6&color=1a1a18&line=c0392b&point=c0392b&area=true&area_color=c0392b&hide_border=true" width="96%" alt="Contribution Graph"/>
+
+<br><br>
+
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=DurgeshDeore&layout=compact&hide_border=true&title_color=1a1a18&text_color=1a1a18&bg_color=f9f8f6" height="140" alt="Top Languages"/>
+
+</div>
+
+<br>
+
+---
+
+### `CONNECT`
+
+<div align="center">
+
+<a href="https://github.com/DurgeshDeore">
+  <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" width="28" height="28" alt="GitHub"/>
+</a>
+&emsp;
+<a href="https://gitlab.com/DurgeshDeore">
+  <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/gitlab.svg" width="28" height="28" alt="GitLab"/>
+</a>
+&emsp;
+<a href="https://linkedin.com/in/durgeshdeore">
+  <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/linkedin.svg" width="28" height="28" alt="LinkedIn"/>
+</a>
+&emsp;
+<a href="mailto:durgeshdeore214@gmail.com">
+  <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/gmail.svg" width="28" height="28" alt="Email"/>
+</a>
+
+<br><br>
+
+<a href="https://www.buymeacoffee.com/durgeshdeoc">
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" width="160" alt="Buy Me A Coffee"/>
+</a>
+
+</div>
+
+<br>
+
+---
+
+<div align="center">
+<sub><code>Pune, Maharashtra · India 🇮🇳</code></sub>
+</div>
